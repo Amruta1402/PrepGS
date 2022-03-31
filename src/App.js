@@ -1,16 +1,26 @@
+import React,{Component} from 'react'
 import {Navbar,NavbarBrand} from 'reactstrap';
+import Home from './components/HomeComponent';
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
 
-function App() {
+class App extends Component {
+  constructor(props) {
+    super(props);
+
+    // this.state={
+    //   info:INFO
+    // }
+  }
+  render(){
   return (
+    <BrowserRouter>
     <div className="App">
-      <Navbar dark className="bg-dark">
-        <div className="container">
-          <NavbarBrand href='/'>PrepGS</NavbarBrand>
-        </div>
-      </Navbar>
+      <Home/>
     </div>
+    </BrowserRouter>
   );
+}
 }
 
 export default App;

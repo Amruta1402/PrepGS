@@ -1,9 +1,10 @@
 import React ,{useEffect, useState} from "react";
 import "../App.css";
 import MenuItem from './MenuItemComponent';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect ,withRouter} from 'react-router-dom';
 import Dashboard from './DashboardComponent';
 import MyPost from './MyPostComponent';
+import {Button} from 'reactstrap';
 
  function AlumniProfile(props){
     const menuItems=[
@@ -39,6 +40,9 @@ import MyPost from './MyPostComponent';
     //     );
     // }
     
+    function handleLogout(){
+        
+    }
         return (
             <div className="alumni d-flex">
                 <div  className={`side-menu ${inactive?"inactive":""}`}>
@@ -102,15 +106,17 @@ import MyPost from './MyPostComponent';
                         </div>
                         <div className="user-info">
                             <h5>Amruta Talreja</h5>
+                            <Button className="btn" onClick={handleLogout()}><span className="fa fa-sign-out fa-lg"></span>Logout</Button>
                         </div>
                     </div>
                 </div>
                 <div className={`content ${inactive?"inactive":""}`}>
                     <Switch>
-                    <Route exact path="/alumni" component={()=><Dashboard posts={props.posts}/>}></Route>
+                    <Route exact path="/alumni" component={()=><Dashboard posts={props.posts} addPost={props.addPost} postsLoading={props.postsLoading} postsErrmess={props.postsErrmess} />}></Route>
                         <Route exact path="/alumni/content" component={()=><Content/>}></Route>
                         
-                        <Route path='/alumni/mypost' component={()=><MyPost posts={props.posts}/>}/>
+                        <Route path='/alumni/mypost' component={()=><MyPost posts={props.posts} addPost={props.addPost}
+                        postsLoading={props.postsLoading} postsErrmess={props.postsErrmess} />}/>
                         <Redirect to='/alumni'/>
                     </Switch>
                 </div>

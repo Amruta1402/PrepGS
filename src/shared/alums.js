@@ -100,7 +100,7 @@ export const ALUMS=[
     },
     {
         id:9,
-        name:"Aanchal Kalpande",
+        name:"Aanchal Kalbande",
         enrollment:'0801me191001',
         password:"aanchal",
         specialization:'UPSC',
@@ -122,9 +122,9 @@ export const ALUMS=[
     },
     {
         id:11,
-        name:"Varun Dutt Saxena",
+        name:"Jhankar Jeevnani",
         enrollment:'0801me191090',
-        password:"varun",
+        password:"jhankar",
         specialization:'GATE',
         image:'assets/aboutus.jpg',
         alumni:true,

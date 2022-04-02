@@ -299,9 +299,9 @@ padding: 0;
 
 .side-menu-footer .user-info{
   display: inline-block;
-  margin:0 10px;
+  margin:auto 10px;
   color: #fff;
-  transform: translateY(-60%);
+  /* transform: translateY(-60%); */
 }
 
 .side-menu.inactive .side-menu-footer .user-info{

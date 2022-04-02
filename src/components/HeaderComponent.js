@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, NavbarToggler, Nav, NavItem, Collapse, Modal, ModalHeader, ModalBody, Button, Form, FormGroup, Label, Input, Row ,Col} from 'reactstrap';
 import { Carousel, Tabs, Tab } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink ,withRouter} from 'react-router-dom';
 
 
 class Header extends Component {
@@ -30,11 +30,19 @@ class Header extends Component {
         alert("Enrollment: " + this.enroll.value + " password: " + this.password.value);
         event.preventDefault();
         this.toggleModal();
+        this.props.history.push('/alumni');
     }
     handleSignup(event) {
         
         console.log("username: " + this.name.value + "enroll: " + this.enrollment.value + "password: " + this.pass.value + "alumni: " + this.alumni.value+ "specialization: "+this.state.selectedOption);
         alert("username: " + this.name.value + "enroll: " + this.enrollment.value + "password: " + this.pass.value + "alumni: " + this.alumni.value+ "specialization: "+this.state.selectedOption);
+
+        if(this.alumni.value){
+            this.props.history.push('/alumni');
+        }
+        else{
+            this.props.history.push('/afterlogin');
+        }
         event.preventDefault();
         this.toggleModal();
     }
@@ -245,4 +253,4 @@ class Header extends Component {
     }
 }
 
-export default Header;
+export default withRouter(Header);

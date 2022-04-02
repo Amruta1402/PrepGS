@@ -1,6 +1,7 @@
 import React,{ Component } from 'react';
 import { Card, CardBody, CardHeader ,CardImg,CardTitle,CardSubtitle} from 'reactstrap';
 import Carousel from 'react-elastic-carousel';
+import Loading from './LoadingComponent';
 
 function Alumni({alum}) {
     return (
@@ -56,10 +57,30 @@ class Upsc extends Component{
                     </div>
                 </div>
                 <div className="alum-section text-center">
+                {
+                    (this.props.alumsLoading)?
+                    (<div className="container">
+                        <div className="row">
+                            <Loading />
+                        </div>
+                    </div>)
+                    :
+                    
+                    (this.props.alumsErrmess)?
+                    (<div className="container">
+                        <div className="row">
+                            <h4>{this.props.alumsErrmess}</h4>
+                        </div>
+                    </div>)
+                    :
+                    <div>
                     <h3 className="pt-3">Our Alums who cracked it!!</h3>
                     <Carousel breakPoints={breakPoints}>
                         {alumList}
                     </Carousel>
+                    </div>
+                    }
+                   
                 </div>
             </React.Fragment>
         );

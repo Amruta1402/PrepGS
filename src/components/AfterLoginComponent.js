@@ -57,16 +57,16 @@ class AfterLogin extends Component {
                 <TabContainer className="mb-10">
                 <Tabs fill justify  id="subject-tab" defaultActiveKey="placements">
                     <Tab eventKey="gate" title="GATE" tabClassName='tab-link'>
-                        <Gate alums={this.props.gate}/>
+                        <Gate alums={this.props.gate} alumsLoading={this.props.alumsLoading} alumsErrmess={this.props.alumsErrmess}/>
                     </Tab>
                     <Tab eventKey="cat" title="CAT" tabClassName='tab-link'>
-                        <Cat alums={this.props.cat}/>
+                        <Cat alums={this.props.cat} alumsLoading={this.props.alumsLoading} alumsErrmess={this.props.alumsErrmess}/>
                     </Tab>
                     <Tab eventKey="placements" title="Placements" tabClassName='tab-link'>
-                        <Placement alums={this.props.placement}/>
+                        <Placement alums={this.props.placement} alumsLoading={this.props.alumsLoading} alumsErrmess={this.props.alumsErrmess}/>
                     </Tab>
                     <Tab eventKey="upsc" title="UPSC" tabClassName='tab-link'>
-                        <Upsc alums={this.props.upsc}/>
+                        <Upsc alums={this.props.upsc} alumsLoading={this.props.alumsLoading} alumsErrmess={this.props.alumsErrmess}/>
                     </Tab>
                 </Tabs>
                 </TabContainer>

@@ -7,8 +7,7 @@ import Placement from './PlacementComponent';
 import Cat from './CatComponent';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
-import SimpleNavbar from './SimpleNavbarComponent';
-import { NavLink } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class AfterLogin extends Component {
     constructor(props) {
@@ -21,8 +20,8 @@ class AfterLogin extends Component {
         }
         this.toggleNav = this.toggleNav.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
-        this.handleLogin = this.handleLogin.bind(this);
-        this.handleSignup = this.handleSignup.bind(this);
+        // this.handleLogin = this.handleLogin.bind(this);
+        // this.handleSignup = this.handleSignup.bind(this);
         
     }
     toggleNav() {
@@ -33,25 +32,27 @@ class AfterLogin extends Component {
             isModalOpen: !this.state.isModalOpen
         });
     }
-    handleLogin(event) {
-        this.toggleModal();
-        alert("Enrollment: " + this.enroll.value + " password: " + this.password.value);
-        event.preventDefault();
+    // handleLogin(event) {
+    //     this.toggleModal();
+    //     this.props.loginUser({username: this.username.value, password: this.password.value},this.props.history);
+    //     event.preventDefault();
 
-    }
-    handleSignup(event) {
-        // this.toggleModal();
-        console.log("username: " + this.name.value + "enroll: " + this.enrollment.value + "password: " + this.pass.value + "alumni: " + this.alumni.value);
-        alert("username: " + this.name.value + "enroll: " + this.enrollment.value + "password: " + this.pass.value + "alumni: " + this.alumni.value);
-        event.preventDefault();
+    // }
+    // handleSignup(event) {
+    //     // this.toggleModal();
+    //     console.log("username: " + this.name.value + "enroll: " + this.enrollment.value + "password: " + this.pass.value + "alumni: " + this.alumni.value);
+    //     alert("username: " + this.name.value + "enroll: " + this.enrollment.value + "password: " + this.pass.value + "alumni: " + this.alumni.value);
+    //     event.preventDefault();
 
-    }
+    // }
     
     render() {
         
         return (
             <React.Fragment>
-                <Header/>
+                <Header auth={this.props.auth} 
+          loginUser={this.props.loginUser} 
+          logoutUser={this.props.logoutUser}/>
                 
                 {/* Main Content */}
                 <TabContainer className="mb-10">

@@ -9,8 +9,8 @@ import {Button} from 'reactstrap';
  function AlumniProfile(props){
     const menuItems=[
         {name:"Dashboard" ,exact:true, to:'/alumni',iconClassName:'bi bi-speedometer2'},
-        {name:'Content',exact:true,to:'/alumni/content',iconClassName:'bi bi-newspaper'},
-        {name:'My Posts',to:'/alumni/mypost',iconClassName:'bi bi-vector-pen'}
+        {name:'Content',to:'/content',iconClassName:'bi bi-newspaper'},
+        {name:'My Posts',to:'/mypost',iconClassName:'bi bi-vector-pen'}
     ];
     const [inactive,setInactive]=useState(false);
 
@@ -41,7 +41,7 @@ import {Button} from 'reactstrap';
     // }
     
     function handleLogout(){
-        
+        props.logoutUser();
     }
         return (
             <div className="alumni d-flex">
@@ -102,21 +102,21 @@ import {Button} from 'reactstrap';
                     </div>
                     <div className="side-menu-footer">
                         <div className="avatar">
-                            <img src="./assets/ams2final.jpg"/>
+                            <img src="./assets/user.png"/>
                         </div>
                         <div className="user-info">
-                            <h5>Amruta Talreja</h5>
-                            <Button className="btn" onClick={handleLogout()}><span className="fa fa-sign-out fa-lg"></span>Logout</Button>
+                            <h5>{props.auth.user.username}</h5>
+                            {/* <Button outline className="btn btn-dark text-light" ><span className="fa fa-sign-out fa-lg"></span>Logout</Button> */}
                         </div>
                     </div>
                 </div>
                 <div className={`content ${inactive?"inactive":""}`}>
                     <Switch>
-                    <Route exact path="/alumni" component={()=><Dashboard posts={props.posts} addPost={props.addPost} postsLoading={props.postsLoading} postsErrmess={props.postsErrmess} />}></Route>
-                        <Route exact path="/alumni/content" component={()=><Content/>}></Route>
+                    <Route exact path="/alumni" component={()=><Dashboard posts={props.posts} addPost={props.addPost} postsLoading={props.postsLoading} postsErrmess={props.postsErrmess} logoutUser={props.logoutUser}/>}></Route>
+                        {/* <Route path="/alumni/content" component={()=><Content/>}></Route>
                         
-                        <Route path='/alumni/mypost' component={()=><MyPost posts={props.posts} addPost={props.addPost}
-                        postsLoading={props.postsLoading} postsErrmess={props.postsErrmess} />}/>
+                        <Route path='/alumni/mypost' component={()=><MyPost posts={props.posts.filter(post => post.author===props.auth.user.username)} addPost={props.addPost}
+                        postsLoading={props.postsLoading} postsErrmess={props.postsErrmess} />}/> */}
                         <Redirect to='/alumni'/>
                     </Switch>
                 </div>
@@ -125,4 +125,4 @@ import {Button} from 'reactstrap';
     
 }
 
-export default AlumniProfile;
+export default withRouter(AlumniProfile);

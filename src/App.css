@@ -282,6 +282,7 @@ padding: 0;
   left: 0;
   padding:20px;
   box-sizing: border-box;
+  display:flex;
 }
 
 .side-menu-footer .avatar{
@@ -301,11 +302,13 @@ padding: 0;
   display: inline-block;
   margin:auto 10px;
   color: #fff;
+  font-size: 10px;
   /* transform: translateY(-60%); */
 }
 
 .side-menu.inactive .side-menu-footer .user-info{
-  visibility:hidden;
+  /* visibility:hidden; */
+  display: none;
 }
 
 .content{

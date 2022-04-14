@@ -11,6 +11,7 @@ class Dashboard extends Component {
         }
         this.toggleModal = this.toggleModal.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleLogout = this.handleLogout.bind(this);
     }
 
     toggleModal() {
@@ -23,10 +24,13 @@ class Dashboard extends Component {
         this.props.addPost(this.author.value, this.title.value, this.description.value);
 
     }
+    handleLogout(){
+        this.props.logoutUser();
+    }
     render() {
         const posts = this.props.posts.map((post) => {
             return (
-                <div key={post.id} className="col-12 col-md-6 mt-4">
+                <div key={post._id} className="col-12 col-md-6 mt-4">
                     <Card>
                         <CardHeader>
                             <CardTitle><h3>{post.title}</h3></CardTitle>
@@ -64,7 +68,8 @@ class Dashboard extends Component {
                             <div className="row">
                                 {posts}
                                 <div className="col-12 mt-4">
-                                    <button className="btn btn-dark" onClick={this.toggleModal}><span className="bi bi-vector-pen"> Add Post</span></button>
+                                    <button className="btn btn-dark mr-3" onClick={this.toggleModal}><span className="bi bi-vector-pen"> Add Post</span></button>
+                                    <button className="btn btn-dark" onClick={this.handleLogout}><span className="fa fa-sign-out fa-lg"> Logout</span></button>
                                 </div>
                             </div>
                             <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>

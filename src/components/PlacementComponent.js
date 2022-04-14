@@ -8,8 +8,8 @@ function Alumni({alum}) {
         <React.Fragment>
             <Card key={alum.id} className="cuscard">
                 <CardHeader className="alum-header">
-                    <CardImg top src={alum.image} className="alum-img mb-2"></CardImg>
-                    <CardTitle>{alum.name}</CardTitle>
+                    <CardImg top src="assets/user.png" className="alum-img mb-2"></CardImg>
+                    <CardTitle>{alum.username}</CardTitle>
                     <CardSubtitle>{alum.specialization} Enthusiast</CardSubtitle>
                 </CardHeader>
                 <CardBody>
